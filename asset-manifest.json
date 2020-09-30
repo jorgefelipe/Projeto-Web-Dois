@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.js": "/Projeto-Web-Dois/static/js/main.a9688c5d.chunk.js",
+    "main.js.map": "/Projeto-Web-Dois/static/js/main.a9688c5d.chunk.js.map",
+    "runtime-main.js": "/Projeto-Web-Dois/static/js/runtime-main.4bd0a2de.js",
+    "runtime-main.js.map": "/Projeto-Web-Dois/static/js/runtime-main.4bd0a2de.js.map",
+    "static/css/2.4a6f958a.chunk.css": "/Projeto-Web-Dois/static/css/2.4a6f958a.chunk.css",
+    "static/js/2.dd64b930.chunk.js": "/Projeto-Web-Dois/static/js/2.dd64b930.chunk.js",
+    "static/js/2.dd64b930.chunk.js.map": "/Projeto-Web-Dois/static/js/2.dd64b930.chunk.js.map",
+    "index.html": "/Projeto-Web-Dois/index.html",
+    "precache-manifest.b574e57ae8d66a14191a9e24c8a437ff.js": "/Projeto-Web-Dois/precache-manifest.b574e57ae8d66a14191a9e24c8a437ff.js",
+    "service-worker.js": "/Projeto-Web-Dois/service-worker.js",
+    "static/css/2.4a6f958a.chunk.css.map": "/Projeto-Web-Dois/static/css/2.4a6f958a.chunk.css.map",
+    "static/js/2.dd64b930.chunk.js.LICENSE.txt": "/Projeto-Web-Dois/static/js/2.dd64b930.chunk.js.LICENSE.txt",
+    "static/media/fundooo.jpg": "/Projeto-Web-Dois/static/media/fundooo.8d86fc0f.jpg",
+    "static/media/react.png": "/Projeto-Web-Dois/static/media/react.5260bac0.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4bd0a2de.js",
+    "static/css/2.4a6f958a.chunk.css",
+    "static/js/2.dd64b930.chunk.js",
+    "static/js/main.a9688c5d.chunk.js"
+  ]
+}
