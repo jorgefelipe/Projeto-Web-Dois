@@ -2,6 +2,7 @@
   "name": "criartes-admin",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://jorgefelipe.github.io/Projeto-Web-Dois",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -18,6 +19,7 @@
     "express": "^4.17.1",
     "express-favicon": "^2.0.1",
     "formik": "^2.1.5",
+    "gh-pages": "^3.1.0",
     "intersection-observer": "^0.11.0",
     "path": "^0.12.7",
     "pure-react-carousel": "^1.27.2",
@@ -46,7 +48,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "husky": {
     "hooks": {

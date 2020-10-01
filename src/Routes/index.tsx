@@ -1,18 +1,20 @@
 import React from 'react';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { Switch, Route, HashRouter } from 'react-router-dom';
 
-import Api from 'pages/Api';
 import Login from 'pages/LoginPage';
+import MoviesPage from 'pages/MoviePage';
+import RegistrePage from 'pages/RegisterPage';
 import SiteReact from 'pages/SiteReact';
 
 const Router = () => (
-  <BrowserRouter>
+  <HashRouter basename={process.env.PUBLIC_URL}>
     <Switch>
       <Route path="/" exact component={Login} />
       <Route path="/sitereact" exact component={SiteReact} />
-      <Route path="/api" exact component={Api} />
+      <Route path="/movies" exact component={MoviesPage} />
+      <Route path="/registre" exact component={RegistrePage} />
     </Switch>
-  </BrowserRouter>
+  </HashRouter>
 );
 
 export default Router;

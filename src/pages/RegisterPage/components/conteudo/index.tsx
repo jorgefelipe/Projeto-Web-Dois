@@ -5,7 +5,7 @@ import { Button } from 'components';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
-import { login } from 'services/user';
+import { createUser } from 'services/user';
 import { Text, TextError } from 'styles/styledComponents';
 
 import { Container } from './styles';
@@ -23,12 +23,13 @@ const CampusLogin: React.FC = () => {
 
   const onSubmit = async (values: { email: string; password: string }) => {
     try {
-      const resp = await login({ ...values });
+      const resp = await createUser({ ...values });
       localStorage.setItem('userToken', resp.data.token);
-      history.push('/sitereact');
+      alert('Cadastrado com sucesso!');
+      history.replace('/sitereact');
     } catch (err) {
-      console.log(err);
-      alert(`Falha ao tentar se conectar: ${err.message}`);
+      console.log(err.message);
+      alert(`Erro ao tentar cadastrar: ${err.message}`);
     }
   };
 
@@ -46,6 +47,9 @@ const CampusLogin: React.FC = () => {
 
   return (
     <Container>
+      <Text size="18px" align="left">
+        Faça o seu cadastro
+      </Text>
       <div className="name">
         <Text size="18px" align="left">
           E-mail
@@ -75,10 +79,8 @@ const CampusLogin: React.FC = () => {
       />
       {errors.password && <TextError>{errors.password}</TextError>}
 
-      <p>Esqueceu sua senha?</p>
-
       <div className="botao">
-        <Button label="Entrar" onPress={() => handleSubmit()} />
+        <Button label="Criar Conta" onPress={() => handleSubmit()} />
       </div>
     </Container>
   );
