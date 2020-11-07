@@ -1,82 +1,82 @@
+import Ripple from 'react-ripples';
+
 import styled from 'styled-components';
 
+import { colors } from 'styles';
+
 export const Container = styled.div`
-  h3 {
-    color: #6d6d6d;
-    font-size: 20px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: normal;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0px;
-    margin: 0px;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  padding: 30px;
+  gap: 20px;
+`;
 
-  .quadroTudo {
-    margin-left: 100px;
-    margin-right: 100px;
-    padding-top: 70px;
-    display: flex;
+export const ContentPost = styled.div`
+  padding: 20px;
+  max-width: 300px;
+`;
 
-    max-width: 1500px;
-    justify-content: space-between;
-  }
+export const Description = styled.h1`
+  font-size: 17px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: normal;
+  margin-top: 10px;
+`;
 
-  .quadroUm {
-    font-size: 17px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+export const Title = styled.h1`
+  color: #6d6d6d;
+  font-size: 20px;
+  line-height: 1.7;
 
-    line-height: 1.7;
-    font-weight: normal;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 400px;
-    padding-top: 60px;
-  }
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: normal;
+`;
 
-  .quadroDois {
-    font-size: 17px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+export const ContainerButton = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+`;
 
-    line-height: 1.7;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 400px;
-  }
-  .quadroTres {
-    font-size: 17px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    line-height: 1.7;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 400px;
-  }
-  p {
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
+interface IContainerIcons {
+  color?: string;
+}
 
-  @media (max-width: 800px) {
-    .quadroTudo {
-      flex-direction: column;
-      justify-content: center;
-    }
-    h3 {
-      justify-content: center;
-    }
-  }
+export const ContainerIcons = styled(Ripple)<IContainerIcons>`
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  background-color: ${(props) => props.color || colors.red};
+  padding: 12px;
+  border-radius: 14px;
+`;
+
+export const ContentIcons = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 10px;
+`;
+
+export const ContainerImage = styled(Ripple)`
+  margin-top: 12px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid ${colors.primaryLight};
+  border-radius: 14px;
+  width: 100%;
+  height: 350px;
+  max-width: 450px;
+  max-height: 450px;
+  min-width: 300px;
+  min-height: 300px;
+`;
+
+export const ImageProduct = styled.img`
+  alt: 'img';
+  max-width: 100%;
+  height: 100%;
 `;

@@ -11,7 +11,7 @@ export const Container = styled.div`
   border-radius: 40px;
   padding: 14px 60px;
   width: 500px;
-  height: 350px;
+
 
   .name {
     display: flex;
@@ -27,16 +27,13 @@ export const Container = styled.div`
     margin: 5px;
   }
   .botao {
-    margin: 15px;
     width: 70%;
-    height: 20px;
-    padding: 15px;
   }
 
   input {
     width: 100%;
-    height: 15%;
-    margin: 2.5%;
+    padding: 12px;
+    margin: 12px;
     color: ${colors.black};
     align-items: center;
     padding-left: 15px;

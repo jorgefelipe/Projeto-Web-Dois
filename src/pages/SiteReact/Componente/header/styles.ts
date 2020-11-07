@@ -1,5 +1,18 @@
 import styled from 'styled-components';
 
+import { colors } from 'styles';
+
+export const ContainerLogout = styled.div`
+  margin: 10px;
+  cursor: pointer;
+  display: flex;
+  position: absolute;
+  flex: 1;
+  padding: 10px;
+  background-color: ${colors.red};
+  border-radius: 50%;
+`;
+
 export const Container = styled.div`
   body {
     padding: 0;
@@ -157,7 +170,4 @@ export const Container = styled.div`
     .parteUm{
       margin:0px;
     }
-
-
-
 `;

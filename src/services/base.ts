@@ -1,7 +1,19 @@
 import axios from 'axios';
 
-const api = axios.create({ baseURL: 'https://reqres.in/' });
+const instance = axios.create({
+  baseURL: 'http://127.0.0.1:3333',
+});
 
-export const apiMovies = axios.create({ baseURL: 'http://api.tvmaze.com/' });
+instance.interceptors.request.use((config) => {
+  const token = localStorage.getItem('@reactjsToken');
+  const headers = { ...config.headers };
 
-export default api;
+  if (token) {
+    headers.Authorization = `Bearer ${token}`;
+    headers.Accept = 'application/json';
+  }
+
+  return { ...config, headers };
+});
+
+export default instance;

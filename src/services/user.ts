@@ -1,9 +1,10 @@
+import { INewUser } from 'models/User';
+
 import api from './base';
 
-const login = (body: { email: string; password: string }) =>
-  api.post('/api/login', body);
+const userLogin = (body: { email: string; password: string }) =>
+  api.post('/authenticate', body);
 
-const createUser = (body: { email: string; password: string }) =>
-  api.post('/api/register', body);
+const createUser = (body: INewUser) => api.post('/register', body);
 
-export { login, createUser };
+export default { userLogin, createUser };

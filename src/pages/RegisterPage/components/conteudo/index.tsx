@@ -1,45 +1,56 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { useToasts } from 'react-toast-notifications';
 
 import { Button } from 'components';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
-import { createUser } from 'services/user';
+import userService from 'services/user';
 import { Text, TextError } from 'styles/styledComponents';
 
 import { Container } from './styles';
 
 const CampusLogin: React.FC = () => {
+  const { addToast } = useToasts();
   const history = useHistory();
 
   const validationSchema = yup.object().shape({
     email: yup.string().required('Campo obrigatório').email('E-mail inválido'),
+    name: yup
+      .string()
+      .required('Campo obrigatório')
+      .min(3, 'Mínimo de 3 caracteres'),
     password: yup
       .string()
       .required('Campo obrigatório')
       .min(6, 'Mínimo de 6 caracteres'),
   });
 
-  const onSubmit = async (values: { email: string; password: string }) => {
+  const onSubmit = async (values: {
+    email: string;
+    password: string;
+    name: string;
+  }) => {
     try {
-      const resp = await createUser({ ...values });
-      localStorage.setItem('userToken', resp.data.token);
-      alert('Cadastrado com sucesso!');
-      history.replace('/sitereact');
+      const resp = await userService.createUser(values);
+      addToast(resp.data.message, { appearance: 'success' });
+      history.goBack();
     } catch (err) {
-      console.log(err.message);
-      alert(`Erro ao tentar cadastrar: ${err.message}`);
+      console.log(err);
+      addToast(err.response.data.message, { appearance: 'error' });
     }
   };
 
   const { handleChange, values, errors, handleSubmit } = useFormik<{
     email: string;
     password: string;
+    name: string;
   }>({
     initialValues: {
       email: '',
       password: '',
+      name: '',
     },
     validationSchema,
     onSubmit,
@@ -50,6 +61,19 @@ const CampusLogin: React.FC = () => {
       <Text size="18px" align="left">
         Faça o seu cadastro
       </Text>
+
+      <div className="namee">
+        <Text size="18px">Nome</Text>
+      </div>
+      <input
+        id="name"
+        type="text"
+        name="name"
+        placeholder="Inserir seu nome"
+        value={values.name}
+        onChange={handleChange('name')}
+      />
+      {errors.name && <TextError>{errors.name}</TextError>}
       <div className="name">
         <Text size="18px" align="left">
           E-mail
