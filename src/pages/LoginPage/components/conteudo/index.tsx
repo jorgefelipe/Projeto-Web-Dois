@@ -1,16 +1,21 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { useToasts } from 'react-toast-notifications';
 
 import { Button } from 'components';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
-import { login } from 'services/user';
+import userService from 'services/user';
+import { setUserData } from 'store/user';
 import { Text, TextError } from 'styles/styledComponents';
 
 import { Container } from './styles';
 
 const CampusLogin: React.FC = () => {
+  const { addToast } = useToasts();
+  const dispatch = useDispatch();
   const history = useHistory();
 
   const validationSchema = yup.object().shape({
@@ -18,17 +23,17 @@ const CampusLogin: React.FC = () => {
     password: yup
       .string()
       .required('Campo obrigatório')
-      .min(6, 'Mínimo de 6 caracteres'),
+      .min(8, 'Mínimo de 8 caracteres'),
   });
 
   const onSubmit = async (values: { email: string; password: string }) => {
     try {
-      const resp = await login({ ...values });
-      localStorage.setItem('userToken', resp.data.token);
+      const user = await userService.userLogin(values);
+      dispatch(setUserData(user.data.data.user));
+      localStorage.setItem('@reactjsToken', user.data.data.token);
       history.push('/sitereact');
     } catch (err) {
-      console.log(err);
-      alert(`Falha ao tentar se conectar: ${err.message}`);
+      addToast(err.response.data.message, { appearance: 'error' });
     }
   };
 
@@ -51,7 +56,6 @@ const CampusLogin: React.FC = () => {
           E-mail
         </Text>
       </div>
-
       <input
         id="email"
         type="text"
@@ -74,9 +78,8 @@ const CampusLogin: React.FC = () => {
         onChange={handleChange('password')}
       />
       {errors.password && <TextError>{errors.password}</TextError>}
-
-      <p>Esqueceu sua senha?</p>
-
+      { /* eslint-disable-next-line */}
+      <p onClick={() => history.push('registre')}>Criar conta</p>
       <div className="botao">
         <Button label="Entrar" onPress={() => handleSubmit()} />
       </div>
