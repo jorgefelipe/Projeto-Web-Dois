@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: process.env.BASE_URL || 'http://127.0.0.1:3333',
+  baseURL: 'https://projeto-backend-tres.herokuapp.com/',
 });
 
 instance.interceptors.request.use((config) => {
